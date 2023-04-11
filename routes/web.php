@@ -20,6 +20,13 @@ Route::get('/', [GuestHomeController::class, "index"]);
 
 Route::get('/home', [AdminHomeController::class, "index"])->middleware('auth')->name('home');
 
+Route::middleware("auth")
+    ->prefix("/admin")
+    ->name("admin.")
+    ->group(function() {
+        Route::resources("projects", ProjectController::class);
+    });
+
 Route::middleware('auth')
     ->prefix("profile") // * tutti gli url hanno il prefisso "/profile"
     ->name("profile.") // * tutti i nomi delle rotte hanno il prefisso "profile."
