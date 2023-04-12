@@ -25,7 +25,7 @@
                         <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
+                        <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('Progetti') }}</a>
                     </li>
                 </ul>
             @endauth

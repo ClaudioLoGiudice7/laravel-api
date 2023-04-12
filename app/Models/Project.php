@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Project extends Model
 {
     use HasFactory;
+
+    public function getDescription($max = 50){
+        return substr($this->text, 0, $max) . "...";
+    }
 }

@@ -8,7 +8,16 @@ export default defineConfig({
     plugins: [
         laravel({
             // edit the first value of the array input to point to our new sass files and folder.
-            input: ['resources/scss/app.scss', 'resources/js/app.js'],
+            input: [
+
+                // * assets backoffice
+                'resources/scss/app.scss',
+                'resources/js/app.js',
+
+                // * assets frontoffice
+                'resources/scss/front.scss',
+                'resources/js/front.js',
+            ],
             refresh: true,
         }),
     ],
