@@ -9,7 +9,9 @@ class Project extends Model
 {
     use HasFactory;
 
-    public function getDescription($max = 50){
-        return substr($this->text, 0, $max) . "...";
+    protected $fillable = ['name', 'description', 'technology_used', 'start_date'];
+
+    public function getDescription($max = 20){
+        return substr($this->description, 0, $max) . "...";
     }
 }
