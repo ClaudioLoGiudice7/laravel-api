@@ -13,13 +13,82 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Titolo</th>
-                    <th scope="col">Descrizione</th>
-                    <th scope="col">Linguaggi usati</th>
-                    <th scope="col">Dettagli</th>
-                    <th scope="col">Modifica</th>
-                    <th scope="col">Elimina</th>
+                    <th scope="col">
+                        <a href="{{ route('admin.projects.index') }}?sort=id&order=@if ($sort == 'id' && $order != 'DESC') DESC @else ASC @endif"
+                            class="text-black text-decoration-none">
+                            ID
+                            @if ($sort == 'id')
+                                <i
+                                    class="bi bi-chevron-down d-inline-block
+                                    @if ($order == 'DESC') bi bi-chevron-up @endif">
+                                </i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="{{ route('admin.projects.index') }}?sort=name&order=@if ($sort == 'name' && $order != 'DESC') DESC @else ASC @endif"
+                            class="text-black text-decoration-none">
+                            Titolo
+                            @if ($sort == 'name')
+                                <i
+                                    class="bi bi-chevron-down d-inline-block
+                                    @if ($order == 'DESC') bi bi-chevron-up @endif">
+                                </i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="{{ route('admin.projects.index') }}?sort=description&order=@if ($sort == 'description' && $order != 'DESC') DESC @else ASC @endif"
+                            class="text-black text-decoration-none">
+                            Descrizione
+                            @if ($sort == 'description')
+                                <i
+                                    class="bi bi-chevron-down d-inline-block
+                                    @if ($order == 'DESC') bi bi-chevron-up @endif">
+                                </i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="{{ route('admin.projects.index') }}?sort=technology_used&order=@if ($sort == 'technology_used' && $order != 'DESC') DESC @else ASC @endif"
+                            class="text-black text-decoration-none">
+                            Linguaggi usati
+                            @if ($sort == 'technology_used')
+                                <i
+                                    class="bi bi-chevron-down d-inline-block
+                                    @if ($order == 'DESC') bi bi-chevron-up @endif">
+                                </i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="{{ route('admin.projects.index') }}?sort=created_at&order=@if ($sort == 'created_at' && $order != 'DESC') DESC @else ASC @endif"
+                            class="text-black text-decoration-none">
+                            Data creazione
+                            @if ($sort == 'created_at')
+                                <i
+                                    class="bi bi-chevron-down d-inline-block
+                                    @if ($order == 'DESC') bi bi-chevron-up @endif">
+                                </i>
+                            @endif
+                        </a>
+                    </th>
+                    <th scope="col">
+                        <a href="{{ route('admin.projects.index') }}?sort=updated_at&order=@if ($sort == 'updated_at' && $order != 'DESC') DESC @else ASC @endif"
+                            class="text-black text-decoration-none">
+                            Data ultima modifica
+                            @if ($sort == 'updated_at')
+                                <i
+                                    class="bi bi-chevron-down d-inline-block
+                                    @if ($order == 'DESC') bi bi-chevron-up @endif">
+                                </i>
+                            @endif
+                        </a>
+                    </th>
+
+                    <th scope="col" class="text-black">Dettagli</th>
+                    <th scope="col" class="text-black">Modifica</th>
+                    <th scope="col" class="text-black">Elimina</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,6 +98,8 @@
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->getDescription() }}</td>
                         <td>{{ $project->technology_used }}</td>
+                        <td>{{ $project->created_at }}</td>
+                        <td>{{ $project->updated_at }}</td>
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}">
                                 <i class="bi bi-eye"></i>

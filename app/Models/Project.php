@@ -14,4 +14,12 @@ class Project extends Model
     public function getDescription($max = 20){
         return substr($this->description, 0, $max) . "...";
     }
+
+    public function getUpdatedAtAttribute($value){
+        return date("d/m/Y H:i:s", strtotime($value));
+    }
+
+    public function getCreatedAtAttribute($value){
+        return date("d/m/Y H:i:s", strtotime($value));
+    }
 }
