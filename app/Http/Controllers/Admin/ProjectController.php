@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -53,8 +54,9 @@ class ProjectController extends Controller
 
         $project->save();
 
-         // Reindirizzamento alla pagina di dettaglio della canzone appena salvata
-        return redirect()->route('admin.projects.show', ['project' => $project]);
+        // Reindirizzamento alla pagina di dettaglio della canzone appena salvata
+        return redirect()->route('admin.projects.show', ['project' => $project])
+            ->with("message", "Progetto creato con successo!");
     }
 
     /**

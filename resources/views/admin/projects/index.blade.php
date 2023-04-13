@@ -52,7 +52,7 @@
                     <th scope="col">
                         <a href="{{ route('admin.projects.index') }}?sort=technology_used&order=@if ($sort == 'technology_used' && $order != 'DESC') DESC @else ASC @endif"
                             class="text-black text-decoration-none">
-                            Linguaggi usati
+                            Linguaggi
                             @if ($sort == 'technology_used')
                                 <i
                                     class="bi bi-chevron-down d-inline-block
@@ -64,7 +64,7 @@
                     <th scope="col">
                         <a href="{{ route('admin.projects.index') }}?sort=created_at&order=@if ($sort == 'created_at' && $order != 'DESC') DESC @else ASC @endif"
                             class="text-black text-decoration-none">
-                            Data creazione
+                            Creazione
                             @if ($sort == 'created_at')
                                 <i
                                     class="bi bi-chevron-down d-inline-block
@@ -76,7 +76,7 @@
                     <th scope="col">
                         <a href="{{ route('admin.projects.index') }}?sort=updated_at&order=@if ($sort == 'updated_at' && $order != 'DESC') DESC @else ASC @endif"
                             class="text-black text-decoration-none">
-                            Data ultima modifica
+                            Ultima modifica
                             @if ($sort == 'updated_at')
                                 <i
                                     class="bi bi-chevron-down d-inline-block
@@ -86,9 +86,9 @@
                         </a>
                     </th>
 
-                    <th scope="col" class="text-black">Dettagli</th>
-                    <th scope="col" class="text-black">Modifica</th>
-                    <th scope="col" class="text-black">Elimina</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>

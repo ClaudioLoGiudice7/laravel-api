@@ -17,13 +17,18 @@
         <form action="{{ route('admin.projects.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="name" class="mb-1">Nome del progetto</label>
+                <label for="name" class="mb-1">Nome</label>
                 <input type="text" name="name" id="name" class="form-control mb-3" required>
             </div>
 
             <div class="form-group">
                 <label for="description" class="mb-1">Descrizione</label>
                 <textarea name="description" id="description" rows="3" class="form-control mb-3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="image" class="mb-1">Immagine</label>
+                <input type="text" name="image" id="image" class="form-control mb-3" required>
             </div>
 
             <div class="form-group">
