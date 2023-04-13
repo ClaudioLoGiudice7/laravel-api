@@ -4,9 +4,9 @@
 
 @section('content')
     <section>
-        <a href="{{ route('admin.projects.index') }}" class="btn btn-info">Torna alla lista</a>
-        <h6>{{ $project->start_date }}</h6>
-        <h3>{{ $project->technology_used }}</h3>
         <p>{{ $project->description }}</p>
+        <h3 class="mb-3">{{ $project->technology_used }}</h3>
+        <h6 class="mb-5">{{ $project->start_date }}</h6>
+        <a href="{{ route('admin.projects.index') }}" class="btn btn-info">Torna alla lista</a>
     </section>
 @endsection

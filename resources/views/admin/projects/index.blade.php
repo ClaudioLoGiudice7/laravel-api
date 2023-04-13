@@ -16,10 +16,10 @@
                     <th scope="col">ID</th>
                     <th scope="col">Titolo</th>
                     <th scope="col">Descrizione</th>
-                    <th scope="col">Linguaggio usato</th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
-                    <th scope="col"></th>
+                    <th scope="col">Linguaggi usati</th>
+                    <th scope="col">Dettagli</th>
+                    <th scope="col">Modifica</th>
+                    <th scope="col">Elimina</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +32,16 @@
                         <td>
                             <a href="{{ route('admin.projects.show', $project) }}">
                                 <i class="bi bi-eye"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.projects.edit', ['project' => $project]) }}">
+                                <i class="bi bi-pencil"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.projects.destroy', ['project' => $project]) }}">
+                                <i class="bi bi-trash"></i>
                             </a>
                         </td>
                     </tr>

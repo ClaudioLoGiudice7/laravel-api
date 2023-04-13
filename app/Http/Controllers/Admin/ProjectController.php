@@ -26,7 +26,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -37,7 +37,19 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        
+        $project = new Project;
+
+        $project->name = $data["name"];
+        $project->description = $data["description"];
+        $project->technology_used = $data["technology_used"];
+        $project->start_date = $data["start_date"];
+
+        $project->save();
+
+         // Reindirizzamento alla pagina di dettaglio della canzone appena salvata
+        return redirect()->route('admin.projects.show', ['project' => $project]);
     }
 
     /**
@@ -59,7 +71,7 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        //
+        return view('admin.projects.edit', compact('project'));
     }
 
     /**
@@ -71,8 +83,18 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'technology_used' => 'required|max:255',
+            'start_date' => 'required|date',
+        ]);
+
+        $project->update($validatedData);
+
+        return redirect()->route('admin.projects.show', $project);
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -82,6 +104,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('admin.projects.index');
     }
+
 }
