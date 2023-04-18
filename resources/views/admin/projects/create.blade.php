@@ -14,7 +14,7 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name" class="mb-1">Nome</label>
@@ -28,7 +28,7 @@
 
             <div class="form-group">
                 <label for="image" class="mb-1">Immagine</label>
-                <input type="text" name="image" id="image" class="form-control mb-3" required>
+                <input type="file" name="image" id="image" class="form-control mb-3" required>
             </div>
 
             <div class="form-group">
