@@ -15,6 +15,12 @@ class Project extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function technologies()
+    {
+        return $this->belongsToMany(Technology::class);
+    }
+
+
     public function getDescription($max = 20){
         return substr($this->description, 0, $max) . "...";
     }

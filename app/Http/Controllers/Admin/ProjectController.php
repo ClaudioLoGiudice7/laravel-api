@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use App\Models\Category;
+use App\Models\Technology;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +35,9 @@ class ProjectController extends Controller
     public function create()
     {
         $categories = Category::orderBy("label")->get();
-        return view('admin.projects.create', compact('categories'));
+        $technologies = Technology::all();
+
+        return view('admin.projects.create', compact('categories', "technologies"));
     }
 
 
@@ -57,6 +60,9 @@ class ProjectController extends Controller
         $project->category_id = $data["category_id"];
 
         $project->save();
+
+        $technologies = $request->input('technologies', []);
+        $project->technologies()->attach($technologies);
 
         // Reindirizzamento alla pagina di dettaglio della canzone appena salvata
         return redirect()->route('admin.projects.show', ['project' => $project])
@@ -83,7 +89,9 @@ class ProjectController extends Controller
     public function edit(Project $project)
     {
         $categories = Category::orderBy("label")->get();
-        return view('admin.projects.edit', compact('project', "categories"));
+        $technologies = Technology::all();
+
+        return view('admin.projects.edit', compact('project', "categories", "technologies"));
     }
 
     /**
@@ -129,6 +137,9 @@ class ProjectController extends Controller
         $project->category_id = $data["category_id"];
 
         $project->save();
+
+        $technologies = $request->input('technologies', []);
+        $project->technologies()->sync($technologies);
 
         return redirect()->route('admin.projects.show', ['project' => $project])
             ->with("message", "Progetto aggiornato con successo!");     

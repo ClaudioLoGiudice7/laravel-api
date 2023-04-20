@@ -19,7 +19,16 @@
             </div>
 
             <div class="form-group">
-                <label for="technology_used" class="mb-1">Linguaggi usati</label>
+                <label for="technologies">Tecnologie utilizzate:</label>
+                <select name="technologies[]" class="form-control" multiple>
+                    @foreach ($technologies as $technology)
+                        <option value="{{ $technology->id }}">{{ $technology->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="technology_used" class="mb-1 mt-3">Linguaggi usati</label>
                 <input type="text" name="technology_used" id="technology_used" class="form-control mb-3"
                     value="{{ $project->technology_used }}" required>
             </div>

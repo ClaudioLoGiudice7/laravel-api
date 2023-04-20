@@ -37,6 +37,15 @@
             </div>
 
             <div class="form-group">
+                <label for="technologies">Tecnologie utilizzate:</label>
+                <select name="technologies[]" class="form-control" multiple>
+                    @foreach ($technologies as $technology)
+                        <option value="{{ $technology->id }}">{{ $technology->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="image" class="mb-1">Immagine</label>
                 <input type="file" name="image" id="image" class="form-control mb-3" required>
             </div>
@@ -47,7 +56,7 @@
             </div>
 
             <div class="form-group">
-                <label for="start_date" class="mb-1">Data di inizio</label>
+                <label for="start_date" class="mb-1 mt-3">Data di inizio</label>
                 <input type="date" name="start_date" id="start_date" class="form-control mb-3" required>
             </div>
 
