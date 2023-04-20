@@ -37,7 +37,7 @@
                             @endif
                         </a>
                     </th>
-                    <th scope="col">
+                    <th scope="col" class="text-black">
                         Categoria
                     </th>
                     <th scope="col">
