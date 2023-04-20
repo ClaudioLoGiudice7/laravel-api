@@ -38,6 +38,9 @@
                         </a>
                     </th>
                     <th scope="col">
+                        Categoria
+                    </th>
+                    <th scope="col">
                         <a href="{{ route('admin.projects.index') }}?sort=description&order=@if ($sort == 'description' && $order != 'DESC') DESC @else ASC @endif"
                             class="text-black text-decoration-none">
                             Descrizione
@@ -96,6 +99,7 @@
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                         <td>{{ $project->name }}</td>
+                        <td>{{ $project->category?->label }}</td>
                         <td>{{ $project->getDescription() }}</td>
                         <td>{{ $project->technology_used }}</td>
                         <td>{{ $project->created_at }}</td>
@@ -123,13 +127,17 @@
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Cancellazione progetto</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Cancellazione progetto
+                                            </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <p>Sei sicuro di voler cancellare il progetto "{{ $project->name }}"?
-                                                L'operazione è irreversibile!</p>
+                                            <p>
+                                                Sei sicuro di voler cancellare il progetto "{{ $project->name }}"?
+                                                L'operazione è irreversibile!
+                                            </p>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"

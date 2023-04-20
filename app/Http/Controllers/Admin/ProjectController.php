@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Project;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -32,8 +33,10 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view('admin.projects.create');
+        $categories = Category::orderBy("label")->get();
+        return view('admin.projects.create', compact('categories'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -51,6 +54,7 @@ class ProjectController extends Controller
         $project->description = $data["description"];
         $project->technology_used = $data["technology_used"];
         $project->start_date = $data["start_date"];
+        $project->category_id = $data["category_id"];
 
         $project->save();
 
@@ -78,7 +82,8 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('admin.projects.edit', compact('project'));
+        $categories = Category::orderBy("label")->get();
+        return view('admin.projects.edit', compact('project', "categories"));
     }
 
     /**
@@ -90,17 +95,45 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
-            'description' => 'required',
-            'technology_used' => 'required|max:255',
-            'start_date' => 'required|date',
-        ]);
+        // $validatedData = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'description' => 'required|string',
+        //     'technology_used' => 'required|max:255',
+        //     "category_id" => "nullable|exists:categories,id",
+        //     'start_date' => 'required|date',
+        // ],
+        // [
+        //     "name.required" => "Il nome è obbligatorio",
+        //     "name.string" => "Il nome deve essere una stringa",
+        //     "name.max:255" => "Il nome deve avere massimo 255 caratteri",
+        //     "description.required" => "La descrizione è obbligatoria",
+        //     "description.string" => "La descrizione deve essere una stringa",
+        //     "technology_used.required" => "Il linguaggio è obbligatorio",
+        //     "technology_used.string" => "Il linguaggio deve avere massimo 255 caratteri",
+        //     "category_id.exists" => "L\'id della categoria non è valido"
+        // ]);
 
-        $project->update($validatedData);
+        // $project->fill($validatedData);
+        // $project->save();
 
-        return redirect()->route('admin.projects.show', $project);
+        // return redirect()->route('admin.projects.show', $project);
+
+
+
+
+        $data = $request->all();
+
+        $project->name = $data["name"];
+        $project->description = $data["description"];
+        $project->technology_used = $data["technology_used"];
+        $project->category_id = $data["category_id"];
+
+        $project->save();
+
+        return redirect()->route('admin.projects.show', ['project' => $project])
+            ->with("message", "Progetto aggiornato con successo!");     
     }
+
 
 
     /**
@@ -115,5 +148,4 @@ class ProjectController extends Controller
 
         return redirect()->route('admin.projects.index');
     }
-
 }

@@ -9,7 +9,11 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'technology_used', 'start_date'];
+    protected $fillable = ["category_id", 'name', 'description', 'technology_used', 'start_date'];
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
 
     public function getDescription($max = 20){
         return substr($this->description, 0, $max) . "...";

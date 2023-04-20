@@ -22,6 +22,16 @@
             </div>
 
             <div class="form-group">
+                <label for="category_id" class="mb-1">Categoria</label>
+                <select name="category_id" id="category_id" class="form-select mb-3">
+                    <option value="">Non categorizzato</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->label }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
                 <label for="description" class="mb-1">Descrizione</label>
                 <textarea name="description" id="description" rows="3" class="form-control mb-3"></textarea>
             </div>
@@ -41,7 +51,7 @@
                 <input type="date" name="start_date" id="start_date" class="form-control mb-3" required>
             </div>
 
-            <button type="submit" class="btn btn-outline-primary mt-2">Crea progetto</button>
+            <button type="submit" class="btn btn-outline-primary my-2">Crea progetto</button>
         </form>
     </div>
 @endsection
