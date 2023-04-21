@@ -142,7 +142,7 @@ class ProjectController extends Controller
         $project->technologies()->sync($technologies);
 
         return redirect()->route('admin.projects.show', ['project' => $project])
-            ->with("message", "Progetto aggiornato con successo!");     
+            ->with("message", "Progetto aggiornato con successo!");
     }
 
 
