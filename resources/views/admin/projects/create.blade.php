@@ -38,7 +38,7 @@
 
             <div class="form-group">
                 <label for="technologies">Tecnologie utilizzate:</label>
-                <select name="technologies[]" class="form-control" multiple>
+                <select name="technologies[]" class="form-control mb-3" multiple>
                     @foreach ($technologies as $technology)
                         <option value="{{ $technology->id }}">{{ $technology->name }}</option>
                     @endforeach
