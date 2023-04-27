@@ -14,6 +14,11 @@
             </div>
 
             <div class="form-group">
+                <label for="is_published" class="mb-1">Pubblicato</label>
+                <input type="checkbox" name="is_published" id="is_published" class="form-check-control mb-3" required>
+            </div>
+
+            <div class="form-group">
                 <label for="description" class="mb-1">Descrizione</label>
                 <textarea name="description" id="description" rows="3" class="form-control mb-3">{{ $project->description }}</textarea>
             </div>
@@ -44,7 +49,7 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-outline-primary mt-2">
+            <button type="submit" class="btn btn-outline-primary my-2">
                 Modifica progetto
             </button>
         </form>

@@ -22,6 +22,11 @@
             </div>
 
             <div class="form-group">
+                <label for="is_published" class="mb-1">Pubblicato</label>
+                <input type="checkbox" name="is_published" id="is_published" class="form-check-control mb-3" required>
+            </div>
+
+            <div class="form-group">
                 <label for="category_id" class="mb-1">Categoria</label>
                 <select name="category_id" id="category_id" class="form-select mb-3">
                     <option value="">Non categorizzato</option>

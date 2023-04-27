@@ -58,6 +58,7 @@ class ProjectController extends Controller
         $project->technology_used = $data["technology_used"];
         $project->start_date = $data["start_date"];
         $project->category_id = $data["category_id"];
+        $project->published = $data["published"] ?? 0;
 
         $project->save();
 
