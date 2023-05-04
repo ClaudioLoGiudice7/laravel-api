@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Admin\Mail\PublishedProjectsMail;
+use App\Mail\PublishedProjectMail;
 use App\Models\Project;
 use App\Models\Category;
 use App\Models\Technology;
@@ -69,7 +69,7 @@ class ProjectController extends Controller
         $technologies = $request->input('technologies', []);
         $project->technologies()->attach($technologies);
 
-        $mail = new PublishedProjectsMail();
+        $mail = new PublishedProjectMail();
 
         $user_email = Auth::user()->email;
 

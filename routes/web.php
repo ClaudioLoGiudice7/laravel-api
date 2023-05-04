@@ -19,19 +19,19 @@ use App\Http\Controllers\Admin\ProjectController;
 
 Route::get('/', [GuestHomeController::class, "index"]);
 
-Route::get('/admin/projects', 'App\Http\Controllers\Admin\ProjectController@index')->name('admin.projects.index');
+// Route::get('/admin/projects', 'App\Http\Controllers\Admin\ProjectController@index')->name('admin.projects.index');
 
-Route::get('/admin/projects/create', 'App\Http\Controllers\Admin\ProjectController@create')->name('admin.projects.create');
+// Route::get('/admin/projects/create', 'App\Http\Controllers\Admin\ProjectController@create')->name('admin.projects.create');
 
-Route::post('/admin/projects', 'App\Http\Controllers\Admin\ProjectController@store')->name('admin.projects.store');
+// Route::post('/admin/projects', 'App\Http\Controllers\Admin\ProjectController@store')->name('admin.projects.store');
 
-Route::get('/admin/projects/{project}', 'App\Http\Controllers\Admin\ProjectController@show')->name('admin.projects.show');
+// Route::get('/admin/projects/{project}', 'App\Http\Controllers\Admin\ProjectController@show')->name('admin.projects.show');
 
-Route::get('/admin/projects/{project}/edit', 'App\Http\Controllers\Admin\ProjectController@edit')->name('admin.projects.edit');
+// Route::get('/admin/projects/{project}/edit', 'App\Http\Controllers\Admin\ProjectController@edit')->name('admin.projects.edit');
 
-Route::put('/admin/projects/{project}', 'App\Http\Controllers\Admin\ProjectController@update')->name('admin.projects.update');
+// Route::put('/admin/projects/{project}', 'App\Http\Controllers\Admin\ProjectController@update')->name('admin.projects.update');
 
-Route::delete('/admin/projects/{project}', 'App\Http\Controllers\Admin\ProjectController@destroy')->name('admin.projects.destroy');
+// Route::delete('/admin/projects/{project}', 'App\Http\Controllers\Admin\ProjectController@destroy')->name('admin.projects.destroy');
 
 Route::get('/home', [AdminHomeController::class, "index"])->middleware('auth')->name('home');
 
