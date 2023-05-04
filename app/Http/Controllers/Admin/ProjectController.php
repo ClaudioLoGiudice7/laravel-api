@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Admin\Mail\PublishedProjectsMail;
 use App\Models\Project;
 use App\Models\Category;
 use App\Models\Technology;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -64,6 +68,12 @@ class ProjectController extends Controller
 
         $technologies = $request->input('technologies', []);
         $project->technologies()->attach($technologies);
+
+        $mail = new PublishedProjectsMail();
+
+        $user_email = Auth::user()->email;
+
+        Mail::to($user_email)->send($mail);
 
         // Reindirizzamento alla pagina di dettaglio della canzone appena salvata
         return redirect()->route('admin.projects.show', ['project' => $project])
